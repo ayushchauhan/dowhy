@@ -222,7 +222,7 @@ class PropensityScoreStratificationEstimator(PropensityScoreEstimator):
         )
 
         estimate.add_estimator(self)
-        return estimate
+        return estimate.value
 
     def _get_strata(self, data: pd.DataFrame, num_strata, clipping_threshold):
         # sort the dataframe by propensity score
