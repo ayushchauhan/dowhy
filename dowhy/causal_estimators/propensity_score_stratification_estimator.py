@@ -244,6 +244,8 @@ class PropensityScoreStratificationEstimator(PropensityScoreEstimator):
                 strata.loc[strata[self._target_estimand.treatment_variable[0]] == 0].shape[0],
             )
             > clipping_threshold
+            and 
+            strata["dbar_y"].sum() > 0 ## keep only those strata which have non-zero outcome sum in control
         )
         self.logger.debug(
             "After using clipping_threshold={0}, here are the number of data points in each strata:\n {1}".format(
